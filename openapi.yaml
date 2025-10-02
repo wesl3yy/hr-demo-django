@@ -1,0 +1,296 @@
+openapi: 3.0.0
+info:
+  title: My API
+  version: 1.0.0
+  description: API for searching entities with pagination
+servers:
+  - url: http://127.0.0.1:8000
+    description: Local development server
+paths:
+  /department/search/:
+    get:
+      summary: Search departments
+      description: Search for departments by keyword with pagination
+      operationId: searchDepartments
+      parameters:
+        - name: keyword
+          in: query
+          description: Keyword to search for
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number (starting from 1)
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Paginated list of departments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Total number of matching departments
+                    example: 50
+                  page:
+                    type: integer
+                    description: Current page number
+                    example: 1
+                  page_size:
+                    type: integer
+                    description: Number of items per page
+                    example: 10
+                  results:
+                    type: array
+                    description: List of department objects
+
+  /location/search/:
+    get:
+      summary: Search locations
+      description: Search for locations by keyword with pagination
+      operationId: searchLocations
+      parameters:
+        - name: keyword
+          in: query
+          description: Keyword to search for
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number (starting from 1)
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Paginated list of locations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Total number of matching locations
+                    example: 50
+                  page:
+                    type: integer
+                    description: Current page number
+                    example: 1
+                  page_size:
+                    type: integer
+                    description: Number of items per page
+                    example: 10
+                  results:
+                    type: array
+                    description: List of location objects
+
+
+  /organization/search/:
+    get:
+      summary: Search organizations
+      description: Search for organizations by keyword with pagination
+      operationId: searchOrganizations
+      parameters:
+        - name: keyword
+          in: query
+          description: Keyword to search for
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number (starting from 1)
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Paginated list of organizations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Total number of matching organizations
+                    example: 50
+                  page:
+                    type: integer
+                    description: Current page number
+                    example: 1
+                  page_size:
+                    type: integer
+                    description: Number of items per page
+                    example: 10
+                  results:
+                    type: array
+                    description: List of organization objects
+
+
+  /position/search/:
+    get:
+      summary: Search positions
+      description: Search for positions by keyword with pagination
+      operationId: searchPositions
+      parameters:
+        - name: keyword
+          in: query
+          description: Keyword to search for
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number (starting from 1)
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Paginated list of position
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Total number of matching position
+                    example: 50
+                  page:
+                    type: integer
+                    description: Current page number
+                    example: 1
+                  page_size:
+                    type: integer
+                    description: Number of items per page
+                    example: 10
+                  results:
+                    type: array
+                    description: List of position objects
+
+  /employee/search/:
+    get:
+      summary: Search employees
+      description: Search for employees by keyword with pagination
+      operationId: searchEmployees
+      parameters:
+        - name: keyword
+          in: query
+          description: Keyword to search for
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number (starting from 1)
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - name: location_ids
+          in: query
+          description: Filter by multiple location IDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+            example: [ "loc1", "loc2" ]
+        - name: organization_ids
+          in: query
+          description: Filter by multiple organization IDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+            example: [ "org1", "org2" ]
+        - name: department_ids
+          in: query
+          description: Filter by multiple department IDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+            example: [ "dep1", "dep2" ]
+        - name: position_ids
+          in: query
+          description: Filter by multiple position IDs
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+            example: [ "pos1", "pos2" ]
+      responses:
+        '200':
+          description: Paginated list of departments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Total number of matching departments
+                    example: 50
+                  page:
+                    type: integer
+                    description: Current page number
+                    example: 1
+                  page_size:
+                    type: integer
+                    description: Number of items per page
+                    example: 10
+                  results:
+                    type: array
+                    description: List of department objects
