@@ -1,6 +1,6 @@
 -- Organization
 INSERT INTO organizations (id, name, description, config)
-VALUES ('11111111-1111-1111-1111-111111111111', 'Organization A', 'Technology', '{"allowed_fields": {"departments":["name"]}}');
+VALUES ('11111111-1111-1111-1111-111111111111', 'Organization A', 'Technology', '{"allowed_fields": {"department":["name"]}}');
 
 -- Departments
 INSERT INTO departments (id, name, description, organization_id)
